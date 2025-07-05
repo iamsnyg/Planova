@@ -15,7 +15,7 @@ export default function Home() {
       <div>
         <h1 className="font-permanent-marker">Hello World</h1>
         <p className="font-inter">hello guys my name is sunny</p>
-        <Button>Click me!</Button>
+        <Button variant={"planovaBtn"}>Click me!</Button>
       </div>
       
       
