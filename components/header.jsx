@@ -2,6 +2,9 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
+import { NotebookPen } from "lucide-react";
+import UserMenu from "./user-menu";
 
 const Header = () => {
     return (
@@ -13,13 +16,23 @@ const Header = () => {
                 </Link>
             
 
-                <div>
+                <div className="flex flex-row items-center ">
+                    <Link href="/project/create">
+                        <Button variant="planovaBtn" className="mr-4">
+                            <NotebookPen className="mr-2" size={16} />
+                            <span>Create Project</span>
+                        </Button>
+                    </Link>
+
                     <SignedOut>
-                        <SignInButton />
+                        <SignInButton forceRedirectUrl="/">
+                            <Button variant="outline">Sign In</Button>
+                        </SignInButton>
                     </SignedOut>
                     <SignedIn>
-                        <UserButton />
+                        <UserMenu/>
                     </SignedIn>
+                    
                 </div>
             </nav>
         </header>
