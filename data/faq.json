@@ -1,0 +1,31 @@
+[
+    {
+        "question": "What is Planova?",
+        "answer": "Planova is a comprehensive project management tool designed to help teams plan, track, and collaborate on projects efficiently. It offers features like task management, time tracking, team collaboration, and project analytics to streamline workflows and enhance productivity."
+    },
+    {
+        "question": "How do I create a new project in Planova?",
+        "answer": "To create a new project in Planova, navigate to the 'Projects' section and click on the 'New Project' button. Fill in the required details such as project name, description, and team members, then save to create your project."
+    },
+    {
+        "question": "Can I invite team members to my project?",
+        "answer": "Yes, you can invite team members to your project by going to the project settings and adding their email addresses. They will receive an invitation to join the project."
+    },
+    {
+        "question": "How do I track time spent on tasks?",
+        "answer": "You can track time spent on tasks by using the built-in time tracking feature. Open a task, and you will find options to start, pause, and stop the timer. You can also manually enter time if needed."
+    },
+    {
+        "question": "What are the key features of Planova?",
+        "answer": "Planova offers several key features including task management, time tracking, team collaboration tools, project analytics, and customizable workflows to suit your team's needs."
+    },
+    {
+        "question": "How do I customize my workspace in Planova?",
+        "answer": "To customize your workspace in Planova, go to the 'Settings' section and select 'Workspace'. Here, you can change the appearance, layout, and other preferences to suit your team's needs."
+    },
+    {
+        "question": "Is there a mobile app for Planova?",
+        "answer": "No, currently there is no mobile app for Planova. However, you can access Planova through your mobile browser to manage your projects on the go."
+    }
+
+]

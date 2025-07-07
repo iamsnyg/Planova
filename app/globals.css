@@ -134,3 +134,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .gradient-title {
+    @apply font-extrabold bg-gradient-to-br from-emerald-500 via-emerald-100 to-emerald-500 bg-clip-text tracking-tighter text-transparent pr-2 pb-2
+  }
+
+  .bg-background-spin {
+    @apply   bg-radial from-emerald-500/10 to-emerald-50 bg-[length:100%_200%] animate-in;
+  }
+  .bg-background-spin-2 {
+    @apply bg-gradient-to-b from-emerald-500/50 to-emerald-100 bg-[length:50%_100%] animate-background-position-spin;
+  }
+  .bg-background-spin-3 {
+    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
+  }
+  .bg-background-spin-4 {
+    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
+  }
+  .bg-background-spin-5 {
+    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
+  }
+}
