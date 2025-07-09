@@ -1,9 +1,12 @@
 import React from 'react'
 
-const page = () => {
-return (
-    <div>page</div>
-)
+const Organization = ({ params }) => {
+    const { orgid } = params
+    return (
+        <div>
+            <h1>Organization: {orgid}</h1>
+        </div>
+    )
 }
 
-export default page
+export default Organization
