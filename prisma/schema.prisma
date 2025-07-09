@@ -20,6 +20,7 @@ model User {
   clerkUserId   String    @unique
   name          String?
   email         String    @unique
+  username      String    @unique
   imageUrl      String?
   createdIssues  Issue[]   @relation("Reporter")
   assignedIssues Issue[]   @relation("Assignee")
