@@ -1,3 +1,4 @@
+// "use client";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { Button } from "./ui/button";
 import { NotebookPen } from "lucide-react";
 import UserMenu from "./user-menu";
 import { checkUser } from "@/lib/clerkUser";
+import { UserLoader } from "./user-loader";
 
 const Header = async () => {
     await checkUser();
@@ -14,7 +16,7 @@ const Header = async () => {
 
             <nav className="py-6 px-4 flex items-center  justify-between">
                 <Link href="/">
-                    <Image src="/logo2.png" alt="logo" width={80} height={50} style={{ cursor: "pointer", borderRadius: "50%" }} />
+                    <Image src="/planova.png" alt="logo" width={80} height={50} style={{ cursor: "pointer", borderRadius: "50%" }} />
                 </Link>
             
 
@@ -37,6 +39,7 @@ const Header = async () => {
                     
                 </div>
             </nav>
+            <UserLoader />
         </header>
     );
 };

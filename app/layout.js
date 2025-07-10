@@ -22,18 +22,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider
-  appearance={{
-    baseTheme: shadesOfPurple,
-    variables: {
-      colorPrimary: "#10b981",         // Emerald
-      colorText: "#f3f4f6",            // Light gray
-      colorBackground: "#1f2937",      // Dark background
-      colorInputBackground: "#374151", // Input dark background
-      colorInputText: "#f3f4f6",       // Input text
-    },
-    
-  }}
->
+      appearance={{
+        baseTheme: shadesOfPurple,
+        variables: {
+          colorPrimary: "#10b981",         // Emerald
+          colorText: "#f3f4f6",            // Light gray
+          colorBackground: "#1f2937",      // Dark background
+          colorInputBackground: "#374151", // Input dark background
+          colorInputText: "#f3f4f6",       // Input text
+        },
+        
+        }}
+      > 
 
       <html lang="en" suppressHydrationWarning>
         <body
