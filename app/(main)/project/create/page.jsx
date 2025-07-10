@@ -10,11 +10,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { projectSchema } from '@/app/libs/validator';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import useFetch from '@/hooks/use-fetch';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const CreateProjectPage =  () => {
     const {isLoaded: isOrgLoaded, membership} = useOrganization();
     const {isLoaded: isUserLoaded} = useUser();
     const [isAdmin, setIsAdmin] = useState(false);
+
+    const router = useRouter();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(projectSchema),
@@ -25,6 +30,17 @@ const CreateProjectPage =  () => {
             setIsAdmin(membership.role === 'org:admin');
         }
     }, [isOrgLoaded, isUserLoaded, membership]);
+
+
+    const {data: project, setData, loading, error, fn: createProjectFn} = useFetch(createProject);
+
+    useEffect(() => {
+        if(project){
+            toast.success("Project created successfully!");
+            setData(undefined);
+            router.push(`/project/${project.id}`);
+        }
+    }, [loading]);
     
     if (!isOrgLoaded || !isUserLoaded) {
         return null; 
@@ -40,7 +56,9 @@ const CreateProjectPage =  () => {
         </div>;
     }
 
-    const onSubmit = () =>{}
+    const onSubmit =async (data) => {
+        createProjectFn(data)
+    }
 
     return (
     <div className="container mx-auto  border-1 border-gray-200/30 bg-white/5 rounded-lg shadow-lg p-8">
@@ -48,7 +66,7 @@ const CreateProjectPage =  () => {
 
         <div className='container w-[90%]  mx-auto mt-8 border border-gray-200/30 p-6 rounded-lg shadow-md bg-gray-900'>
             
-            <form className='flex flex-col gap-4' onSubmit={handleSubmit()}>
+            <form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)} >
                 <div className='flex flex-col py-2 '>
                     <h3 className="text-lg font-semibold">Project Name:</h3>
                     <Input 
@@ -85,9 +103,12 @@ const CreateProjectPage =  () => {
                 </div>
 
                 <div className="flex justify-end">
-                    <Button variant={"planovaBtn"} className="mt-4" type="submit" size={"lg"}>
-                        Create Project
+                    <Button variant={"planovaBtn"} className="mt-4" type="submit" size={"lg"} disabled={loading}>
+                        {loading ? "Creating..." : "Create Project"}
                     </Button>
+                    {error && (
+                        <p className="text-red-500 text-sm mt-2">{error.message}</p>
+                    )}
                 </div>
             </form>
             

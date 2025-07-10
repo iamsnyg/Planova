@@ -1,10 +1,10 @@
-import { useFormState } from "@/hooks/use-form-state";
+// import { useFormState } from "@/hooks/use-form-state";
 import { useState } from "react";
 import { toast } from "sonner";
 
 
 const useFetch = (cb) => {
-    const [data, setData] = useFormState(undefined);
+    const [data, setData] = useState(undefined);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
 
