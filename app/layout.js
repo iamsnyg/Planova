@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
+import { Toaster } from "sonner";
 
 const permanentMarker = Permanent_Marker({
   variable: "--font-permanent-marker",
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
             <ParticleBackground />
             <Header />
             <main className="min-h-screen">{children}</main>
+            <Toaster richColors />
             <footer>
               <div className="flex justify-center items-center h-12 bg-emerald-400 text-black font-bold">
                 <p className="text-sm">
