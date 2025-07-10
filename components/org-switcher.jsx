@@ -12,22 +12,23 @@ const OrgSwitcher = () => {
     if (!isLoaded || !isUserLoaded) {
         return null; // or a loading spinner
     }
-  return (
-    <div>
-        <SignedIn>
-            <OrganizationSwitcher 
-                hidePersonal
-                afterCreateOrganizationUrl="/organization/:slug"
-                afterSelectOrganizationUrl="/organization/:slug"
-                createOrganizationMode={
-                    pathname === "/onboarding" ? "navigation" : "modal"
-                }
-                createOrganizationUrl="/onboarding"
-            />
+return (
+<div>
+    <SignedIn>
+        <OrganizationSwitcher 
+            hidePersonal
+            afterCreateOrganizationUrl="/organization/:slug"
+            afterSelectOrganizationUrl="/organization/:slug"
+            createOrganizationMode={
+                pathname === "/onboarding" ? "navigation" : "modal"
+            }
+            createOrganizationUrl="/onboarding"
+            
+        />
 
-        </SignedIn>
-    </div>
-  )
+    </SignedIn>
+</div>
+)
 }
 
 export default OrgSwitcher
