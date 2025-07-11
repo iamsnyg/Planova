@@ -10,3 +10,9 @@ export const projectSchema = z.object({
         .optional(),
 
 });
+
+export const sprintsSchema = z.object({
+    name: z.string().min(1, "Sprint name is required"),
+    startDate: z.date(),
+    endDate: z.date()
+});

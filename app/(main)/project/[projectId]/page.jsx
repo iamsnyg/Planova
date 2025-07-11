@@ -7,7 +7,7 @@ import React from 'react'
 import SprintsCreateForm from '../_components/create-sprint';
 
 const ProjectPage = async ({params}) => {
-  const { projectId } = params;
+  const { projectId } =await params;
   const project = await getProjectById(projectId);
 
   if(!project) {
