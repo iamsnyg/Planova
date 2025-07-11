@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import { BarLoader } from 'react-spinners';
 
-const ProjectLayout = () => {
+const ProjectLayout = ({children}) => {
   return (
-    <div>ProjectLayout</div>
+    <div className='mx-auto'>
+        <Suspense fallback={<span className='flex justify-center items-center h-screen'>
+            <BarLoader color="#4F46E5" width={100} />
+        </span>}>
+            {children}
+        </Suspense>
+    </div>
   )
 }
 

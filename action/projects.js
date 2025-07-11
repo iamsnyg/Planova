@@ -98,3 +98,42 @@ export async function deleteProject(projectId) {
 
 
 }
+
+export async function getProjectById(projectId) {
+    const {userId, orgId} = await auth();
+
+    if (!userId || !orgId) {
+        throw new Error("User not authenticated or organization not selected");
+    }
+
+    const user = await db.user.findUnique({
+        where: { clerkUserId: userId },
+    });
+
+    if (!user) {
+        throw new Error("User not found");
+    }
+
+    const project = await db.project.findUnique({
+        where: { id: projectId },
+        include: {
+            sprints: {
+                orderBy: { createdAt: "desc" },
+            }
+        }
+    });
+
+    // console.log("Project Data:", project);
+
+    if (!project) {
+        // throw new Error("Project not found");
+        return null;
+    }
+
+    if (project.organizationId !== orgId) {
+        return null; 
+    }
+    return project;
+
+
+}
