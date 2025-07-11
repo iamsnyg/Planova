@@ -146,13 +146,7 @@
   .bg-background-spin-2 {
     @apply bg-gradient-to-b from-emerald-500/50 to-emerald-100 bg-[length:50%_100%] animate-background-position-spin;
   }
-  .bg-background-spin-3 {
-    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
-  }
-  .bg-background-spin-4 {
-    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
-  }
-  .bg-background-spin-5 {
-    @apply bg-gradient-to-b from-emerald-500 to-emerald-100 bg-[length:100%_200%] animate-background-position-spin;
-  }
+  
 }
+
+

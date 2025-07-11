@@ -20,7 +20,7 @@ export async function getOrganization(slug){
     }
 
     const organization = (await clerkClient()).organizations.getOrganization({slug});
-    console.log("Organization Data:", (await organization).id);
+    // console.log("Organization Data:", (await organization).id);
     if (!organization) {
         return null; 
     }
