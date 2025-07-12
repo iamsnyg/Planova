@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
 import SprintsCreateForm from '../_components/create-sprint';
+import SprintBoard from '../_components/sprint-board';
+
 
 const ProjectPage = async ({params}) => {
   const { projectId } =await params;
@@ -15,7 +17,7 @@ const ProjectPage = async ({params}) => {
   }
 
   return (
-    <div className="container mx-auto py-20 rounded-md shadow">
+    <div className="container mx-auto space-y-8 ">
       {/* sprints create */}
       <SprintsCreateForm 
         projectId={projectId}
@@ -25,9 +27,13 @@ const ProjectPage = async ({params}) => {
       />
 
       {/* sprints board */}
-      
-      {project.sprints && project.sprints.length > 0 ? (
-        <></>
+
+      {project.sprints.length > 0 ? (
+        <SprintBoard 
+          sprints={project.sprints}
+          projectId={projectId}
+          orgId={project.organizationId}
+        />
       ) : (
         <div className="container mx-auto py-20 text-center">
           <h1 className="text-3xl font-bold">No Sprints Found</h1>

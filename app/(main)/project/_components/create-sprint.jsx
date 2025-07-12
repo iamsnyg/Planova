@@ -110,8 +110,10 @@ const SprintsCreateForm = ({ projectId, projectTitle, projectKey, sprintKey }) =
                                                                 setDateRange(range);
                                                                 field.onChange(range)
                                                             }
-                                                        }
-                                                        }
+                                                        }}
+                                                        disabled={{
+                                                            before: new Date(),
+                                                        }}
                                                         classNames={{
                                                             chevron: "fill-emerald-500",
                                                             range_start: "bg-emerald-700 text-emerald-900 rounded-l-full",
