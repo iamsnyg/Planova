@@ -11,13 +11,17 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createId } from '@paralleldrive/cuid2';
 import { addDays, format } from 'date-fns';
 import {  Calendar1, X } from 'lucide-react';
+// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { DayPicker } from 'react-day-picker';
 import "react-day-picker/dist/style.css";
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 const SprintsCreateForm = ({ projectId, projectTitle, projectKey, sprintKey }) => {
     const [showForm, setShowForm] = useState(false);
+    const router = useRouter();
 
     const [dateRange, setDateRange] = useState({
         from: new Date(),
@@ -34,6 +38,22 @@ const SprintsCreateForm = ({ projectId, projectTitle, projectKey, sprintKey }) =
     })
 
     const {loading: createSprintLoading, fn: createSprintFn} = useFetch(createSprint)
+
+    const onSubmit = async (data)=>{
+        await createSprintFn(projectId, {
+            ...data,
+            startDate: dateRange.from,
+            endDate: dateRange.to,
+        })
+        setShowForm(false)
+        toast.success("Sprint created successfully");
+        router.refresh();
+        // Reset the form or redirect as needed
+        // setDateRange({ from: new Date(), to: addDays(new Date(), 14) });
+        // setValue("name", `${projectKey}-${createId( { length: 3 } )}-${sprintKey}`);
+        // setValue("startDate", dateRange.from);
+        // setValue("endDate", dateRange.to);   
+    }
     return (
         <>
             <div className="flex justify-between items-center mb-4">
@@ -49,7 +69,7 @@ const SprintsCreateForm = ({ projectId, projectTitle, projectKey, sprintKey }) =
             {showForm && 
                 <Card>
                     <CardContent>
-                        <form className='flex gap-4 items-end' >
+                        <form className='flex gap-4 items-end' onSubmit={handleSubmit(onSubmit)} >
                             <div className='flex-1'>
                                 <label htmlFor="name" className="font-medium mb-2">Sprint Name:</label>
                                 <Input 
@@ -111,7 +131,7 @@ const SprintsCreateForm = ({ projectId, projectTitle, projectKey, sprintKey }) =
                                 />
                             </div>
 
-                            <Button>Create Sprint</Button>
+                            <Button type="submit" disabled={createSprintLoading}>Create Sprint</Button>
                         </form>
                     </CardContent>
                 </Card>
