@@ -242,7 +242,7 @@ export default function SprintManager({
                 {canEnd && (
                     <Button
                         onClick={() => handleStatusChange("COMPLETED")}
-                        disabled={loading}
+                        // disabled={loading}
                         variant="destructive"
                     >
                         End Sprint
