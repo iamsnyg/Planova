@@ -20,6 +20,7 @@ const SprintBoard = ({ sprints, projectId, orgId }) => {
         />
 
         {/* kanban board */}
+        
     </div>
   )
 }
